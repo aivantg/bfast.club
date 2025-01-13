@@ -25,8 +25,9 @@ export default function Home() {
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
         <main className={styles.main}>
-          <div>
+          <div style={{ textAlign: "center" }}>
             {"Hey man, ya like breakfast? You've come to the right place."}
+            <br />
             <br />
             <br />
             (coming soon)
