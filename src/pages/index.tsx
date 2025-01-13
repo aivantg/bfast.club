@@ -27,7 +27,8 @@ export default function Home() {
         <main className={styles.main}>
           <div>
             {"Hey man, ya like breakfast? You've come to the right place."}
-
+            <br />
+            <br />
             (coming soon)
           </div>
         </main>
