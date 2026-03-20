@@ -27,6 +27,8 @@ export default function Home() {
           <div style={{ textAlign: "center" }}>
             {"Hey man, ya like breakfast? You've come to the right place."}
             <br />
+            {"Ya like running?"}
+            <br />
             <br />
             <br />
             (coming soon)
