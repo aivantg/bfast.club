@@ -25,7 +25,8 @@ export default function Home() {
       >
         <main className={styles.main}>
           <div style={{ textAlign: "center" }}>
-            {"Hey man, ya like breakfast? ya like running?"}
+            {"Hey man, ya like breakfast? Ya like running?"}
+            {"You've come to the right place."}
             <br />
             <br />
             (coming soon)
