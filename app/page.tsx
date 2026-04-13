@@ -34,7 +34,7 @@ export default function Home() {
         </text>
       </svg>
 
-      <img className="croissant" src="/btrt.jpg" alt="A croissant" />
+      <img className="croissant" src="/btrt_img.jpg" alt="A croissant" />
 
       <Countdown targetISO={targetISO} />
 
