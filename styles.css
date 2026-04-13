@@ -8,8 +8,9 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background: #ffffff;
+  background: #FAEED6;
   color: #000000;
+  height: 100%;
 }
 
 body {
@@ -22,9 +23,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100svh;
-  padding: 40px 20px 60px;
-  gap: 28px;
+  padding: 20px;
+  gap: 16px;
 }
 
 /* Arc SVG title */
@@ -43,7 +45,8 @@ body {
 /* Croissant image */
 .croissant {
   width: 100%;
-  max-width: 420px;
+  max-width: 340px;
+  max-height: 280px;
   border-radius: 16px;
   object-fit: cover;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
@@ -64,6 +67,7 @@ body {
 
 .countdown {
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
   gap: 6px;
 }
