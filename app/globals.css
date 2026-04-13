@@ -40,8 +40,8 @@ body {
 
 .croissant {
   width: 100%;
-  max-width: 340px;
-  max-height: 280px;
+  max-width: 680px;
+  max-height: 560px;
   border-radius: 16px;
   object-fit: cover;
 }
