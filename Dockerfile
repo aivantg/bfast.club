@@ -1,9 +1,26 @@
-FROM nginx:alpine
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY index.html /usr/share/nginx/html/
-COPY styles.css /usr/share/nginx/html/
-COPY favicon.ico /usr/share/nginx/html/
-COPY public/ /usr/share/nginx/html/public/
-EXPOSE 5000
-CMD ["nginx", "-g", "daemon off;"]
+# syntax=docker/dockerfile:1.4
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+RUN --mount=type=cache,target=/root/.npm \
+  npm ci --prefer-offline --cache=/root/.npm --no-progress
+
+COPY . .
+RUN --mount=type=cache,target=/app/.next/cache \
+  npm run build
+
+# Production image — use Next.js standalone output
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
+
+ENV PORT=5000
+ENV NODE_ENV=production
+
+CMD ["node", "server.js"]

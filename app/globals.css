@@ -8,13 +8,10 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background: #FAEED6;
-  color: #000000;
+  background: #faeed6;
+  color: #000;
   height: 100%;
-}
-
-body {
-  font-family: 'Pacifico', cursive;
+  font-family: var(--font-pacifico), cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -29,7 +26,6 @@ body {
   gap: 16px;
 }
 
-/* Arc SVG title */
 .arc-text {
   width: 100%;
   max-width: 580px;
@@ -37,22 +33,19 @@ body {
 }
 
 .arc-text text {
-  font-family: 'Pacifico', cursive;
+  font-family: var(--font-pacifico), cursive;
   font-size: 42px;
-  fill: #000000;
+  fill: #000;
 }
 
-/* Croissant image */
 .croissant {
   width: 100%;
   max-width: 340px;
   max-height: 280px;
   border-radius: 16px;
   object-fit: cover;
-  box-shadow: none;
 }
 
-/* Countdown */
 .countdown-section {
   display: flex;
   flex-direction: column;
@@ -62,7 +55,6 @@ body {
 
 .next-run-label {
   font-size: 22px;
-  color: #000000;
 }
 
 .countdown {
@@ -82,30 +74,24 @@ body {
 .countdown-unit span {
   font-size: 52px;
   line-height: 1;
-  color: #000000;
 }
 
 .countdown-unit label {
   font-size: 13px;
   margin-top: 6px;
-  color: #000000;
-  font-family: 'Pacifico', cursive;
+  font-family: var(--font-pacifico), cursive;
 }
 
 .countdown-sep {
   font-size: 52px;
   line-height: 1;
-  color: #000000;
-  padding-top: 0;
   user-select: none;
 }
 
-/* Location */
 .location {
   font-size: 20px;
   text-align: center;
   max-width: 400px;
-  color: #000000;
 }
 
 @media (max-width: 480px) {
