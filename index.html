@@ -3,20 +3,113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>bfast.club</title>
+    <title>Bean There, Ran That</title>
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div class="page">
-      <main class="main">
-        <div style="text-align: center">
-          Hey man, ya like breakfast? Ya like running?
-          You've come to the right place.
-          <br /><br />
-          (coming soon)
+
+      <!-- Arc Title Text -->
+      <svg class="arc-text" viewBox="0 0 500 110" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="arc" d="M 20,90 Q 250,40 480,90" />
+        </defs>
+        <text>
+          <textPath href="#arc" startOffset="50%" text-anchor="middle">Bean There, Ran That</textPath>
+        </text>
+      </svg>
+
+      <!-- Croissant Image -->
+      <img
+        class="croissant"
+        src="https://dgalywyr863hv.cloudfront.net/pictures/clubs/1527219/37426677/1/large.jpg"
+        alt="A croissant"
+      />
+
+      <!-- Countdown Timer -->
+      <div class="countdown-section">
+        <p class="next-run-label">Next Run In</p>
+        <div class="countdown">
+          <div class="countdown-unit">
+            <span id="days">00</span>
+            <label>Days</label>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span id="hours">00</span>
+            <label>Hours</label>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span id="minutes">00</span>
+            <label>Minutes</label>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <span id="seconds">00</span>
+            <label>Seconds</label>
+          </div>
         </div>
-      </main>
+      </div>
+
+      <!-- Location -->
+      <p class="location">Meet us at William McKinley Monument</p>
+
     </div>
+
+    <script>
+      function getNextFriday7AM() {
+        const now = new Date();
+        const target = new Date(now);
+
+        // Find next Friday (day 5; 0=Sun, 1=Mon, ..., 5=Fri, 6=Sat)
+        const dayOfWeek = now.getDay();
+        let daysUntilFriday = (5 - dayOfWeek + 7) % 7;
+
+        // If today is Friday, check if 7am has already passed
+        if (daysUntilFriday === 0) {
+          const friday7AM = new Date(now);
+          friday7AM.setHours(7, 0, 0, 0);
+          if (now >= friday7AM) {
+            daysUntilFriday = 7;
+          }
+        }
+
+        target.setDate(now.getDate() + daysUntilFriday);
+        target.setHours(7, 0, 0, 0);
+        return target;
+      }
+
+      function pad(n) {
+        return String(n).padStart(2, '0');
+      }
+
+      function updateCountdown() {
+        const diff = getNextFriday7AM() - new Date();
+
+        if (diff <= 0) {
+          document.getElementById('days').textContent = '00';
+          document.getElementById('hours').textContent = '00';
+          document.getElementById('minutes').textContent = '00';
+          document.getElementById('seconds').textContent = '00';
+          return;
+        }
+
+        const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent    = pad(days);
+        document.getElementById('hours').textContent   = pad(hours);
+        document.getElementById('minutes').textContent = pad(minutes);
+        document.getElementById('seconds').textContent = pad(seconds);
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
   </body>
 </html>

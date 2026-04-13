@@ -1,18 +1,3 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-  html {
-    color-scheme: dark;
-  }
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -23,36 +8,124 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background: #ffffff;
+  color: #000000;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Pacifico', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .page {
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-}
-
-.main {
   display: flex;
   flex-direction: column;
-  grid-row-start: 2;
+  align-items: center;
+  min-height: 100svh;
+  padding: 40px 20px 60px;
+  gap: 28px;
 }
 
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
+/* Arc SVG title */
+.arc-text {
+  width: 100%;
+  max-width: 580px;
+  overflow: visible;
+}
+
+.arc-text text {
+  font-family: 'Pacifico', cursive;
+  font-size: 42px;
+  fill: #000000;
+}
+
+/* Croissant image */
+.croissant {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Countdown */
+.countdown-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.next-run-label {
+  font-size: 22px;
+  color: #000000;
+}
+
+.countdown {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 68px;
+}
+
+.countdown-unit span {
+  font-size: 52px;
+  line-height: 1;
+  color: #000000;
+}
+
+.countdown-unit label {
+  font-size: 13px;
+  margin-top: 6px;
+  color: #000000;
+  font-family: 'Pacifico', cursive;
+}
+
+.countdown-sep {
+  font-size: 52px;
+  line-height: 1;
+  color: #000000;
+  padding-top: 0;
+  user-select: none;
+}
+
+/* Location */
+.location {
+  font-size: 20px;
+  text-align: center;
+  max-width: 400px;
+  color: #000000;
+}
+
+@media (max-width: 480px) {
+  .arc-text text {
+    font-size: 32px;
   }
-  .main {
-    align-items: center;
+
+  .countdown-unit span {
+    font-size: 38px;
+  }
+
+  .countdown-sep {
+    font-size: 38px;
+  }
+
+  .countdown-unit {
+    min-width: 52px;
+  }
+
+  .next-run-label {
+    font-size: 18px;
+  }
+
+  .location {
+    font-size: 17px;
   }
 }
